@@ -1,0 +1,24 @@
+@mixin grid-pattern($grid-tiles__pattern){
+  
+  $total-rows : length($grid-tiles__pattern);
+  $tileN : 1;
+  
+  @for $i from 1 through $total-rows
+  {
+    $tiles-per-row:nth($grid-tiles__pattern, $i);
+    
+    @for $j from 1 through $tiles-per-row
+    {
+      li:nth-child(#{$tileN}){
+        //calculate the width
+        width:( 100 / $tiles-per-row ) * 1%;
+        // or fw like susy for calculate width
+        //@include span(1 of $tiles-per-row); 
+       }  
+      $tileN : $tileN + 1;
+    }
+  }
+}
+
+
+@include grid-pattern(2 3 5 2);
